@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import { FMPreview } from "@components/fm-preview/fm-preview";
 
-const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Frontend Mentor",
+  title: "Frontend Mentor | Entertainment web app",
   icons: {
     icon: "/images/favicon-32x32.png",
   },
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={outfit.className}>
         <FMPreview />
         {children}
       </body>
