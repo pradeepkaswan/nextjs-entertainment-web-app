@@ -1,15 +1,38 @@
-export default function Home() {
+import Image from "next/image";
+import { redirect } from "next/navigation";
+
+import iconSearch from "/public/images/icon-search.svg";
+import { auth } from "@/lib/auth";
+import { SearchInput } from "@/components/ui/search-input";
+
+export default async function HomePage() {
+  const session = await auth();
+
+  if (!session?.user) {
+    redirect("/api/auth/signin?callbackUrl=/");
+  }
+
   return (
-    <main className="flex flex-col items-center justify-center space-y-2 min-h-dvh">
-      <h2 className="absolute text-sm font-light top-4">NextJS Frontend Mentor Template</h2>
-      <h1 className="text-lg font-bold underline">TODO</h1>
-      <ul className="space-y-1 list-disc max-w-60">
-        <li>Download starter code</li>
-        <li>Copy assets into /public</li>
-        <li>Set Tailwind color theme based on style guide</li>
-        <li>Import fonts in layout.tsx</li>
-        <li>Change title in layout.tsx</li>
-      </ul>
-    </main>
+    <div className="px-4 py-6 flex flex-col gap-6 | md:px-0 md:py-8 md:gap-8">
+      <div className="flex flex-row items-center justify-center">
+        <Image
+          src={iconSearch}
+          alt="Search icon"
+          className="h-6 w-6 mr-4 | md:h-8 md:w-8 md:mr-6"
+        />
+        <SearchInput
+          placeholder="Search for movies or TV series"
+          className="bg-transparent border-none text-[16px] font-light w-full | md:text-heading-m"
+        />
+      </div>
+      <div>
+        <h2 className="text-[20px] font-light md:text-heading-l">Trending</h2>
+      </div>
+      <div>
+        <h2 className="text-[20px] font-light md:text-heading-l">
+          Recommended for you
+        </h2>
+      </div>
+    </div>
   );
 }

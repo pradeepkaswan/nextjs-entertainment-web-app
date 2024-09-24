@@ -7,7 +7,19 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    colors: {
+      transparent: "transparent",
+      white: "#FFFFFF",
+      primary: "#FC4747",
+      "dark-blue": {
+        DEFAULT: "#10141E",
+        light: "#161D2F",
+      },
+      "greyish-blue": "#5A698F",
+    },
+    textUnderlineOffset: {
+      "primary-offset": "16px",
+    },
   },
   plugins: [],
 };
